@@ -10,10 +10,22 @@ if first_time_buyer == "yes" or first_time_buyer == "y":
 if total_amount > 200.00:
     if is_member == True:
         total_amount = total_amount * 0.8
-        print("Your new total is " + total_amount + ".")
+        print("Your new total is " + str(total_amount) + ".")
     else:
         total_amount = total_amount * 0.9
-        print("Your new total is " + total_amount + ".")
-if total_amount >= 100.00 and total_amount <= 200.00:
+        print("Your new total is " + str(total_amount) + ".")
+elif total_amount >= 100.00 and total_amount <= 200.00:
     total_amount = total_amount * 0.95
-    
+    if total_items > 5:
+        total_amount = total_amount - 10
+        print("Your new total is " + str(total_amount) + ".")
+    else:
+        total_amount == total_amount
+        print("Your new total is " + str(total_amount) + ".")
+elif total_amount < 100:
+    if first_time_buyer == True:
+        total_amount = total_amount - 5
+        print("Your new total is " + str(total_amount) + ".")
+    else:
+        total_amount == total_amount
+        print("Your new total is " + str(total_amount) + ".")
