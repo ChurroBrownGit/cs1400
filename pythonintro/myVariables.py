@@ -35,3 +35,22 @@ print(average)
 #Goal 3
 
 # Most if not all of these give a syntax error.
+
+v a riable = 3
+va#riable = 3
+?3JUE340__de0 = 3
+
+#Challenge 1
+
+number1 = 10
+number2 = 5
+number1 = number1 / number2
+
+#Challenge 2
+
+number1, number2 = 10,5
+
+#Challenge 3
+
+id(number1)
+id(number2)
