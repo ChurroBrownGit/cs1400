@@ -14,3 +14,6 @@ print(False==0) #True
 10 + 7  >  32 / 2
 True  !=  False
 True  ==  1
+
+#Challenge 1
+print(bool("Hello"))
