@@ -23,17 +23,15 @@ else:
 
 # Fixed If/Else
 
-if customer_type == "member":
-    if years >= 5:
+if customer_type == "member" and years >= 5:
         print("You get a 20% discount.")
-    elif years >= 2:
+elif customer_type == "member" and years >= 2:
         print("You get a 10% discount.")
-    else:
+else:
         print("You get a 5% discount.")
-elif customer_type == "guest":
-    if first_time == "yes":
-        print("You get a 5% discount.")
-    else:
-        print("No discount for repeat guests.")
+if customer_type == "guest" and first_time == "yes":
+    print("You get a 5% discount.")
+elif customer_type == "guest" and first_time != "yes:
+    print("No discount for repeat guests.")
 else:
     print("invalid customer type.")
