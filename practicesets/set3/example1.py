@@ -5,6 +5,7 @@ length = len(username)
 is_valid = False
 
 # Nested If/Else
+
 if username:
     if is_alnum:
         if length >= 6:
