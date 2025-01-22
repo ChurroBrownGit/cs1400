@@ -18,10 +18,10 @@ print(newproduct)
 
 #Goal 3
 def at_least_double(r,d):
-    d = 2
     return int(r*d)
 
 r = int(input("What is r?"))
+d = 2
 double = at_least_double(r,d)
 print(double)
 
