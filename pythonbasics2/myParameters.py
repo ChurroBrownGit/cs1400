@@ -35,4 +35,4 @@ def parameter(j):
         print("yes")
 
 parameter()
-#This gives a TypeError that tells you you are missing a possitional argument.
+#This gives a TypeError that tells you are missing a possitional argument.
