@@ -1,4 +1,3 @@
-
 starting_city = input("Enter the starting city: ")
 destination_city = input("Enter the destination city: ")
 travel_method = input("Enter the preferred travel method (car, train, plane): ").lower()
