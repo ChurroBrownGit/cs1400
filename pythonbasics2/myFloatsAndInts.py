@@ -38,3 +38,14 @@ number2 = roundup(number2)
 print(number2)
 
 #Challenge 2
+def quotient(float1,float2):
+    factor = 100
+    float1 = float1 * factor
+    float2 = float2 * factor
+    quotients = float1 // float2
+    return quotients * 0.01
+
+float1 = float(input("What float number? "))
+float2 = float(input("What float number? "))
+quotients = roundup(float1,float2)
+print(quotients)

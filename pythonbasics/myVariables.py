@@ -36,9 +36,9 @@ print(average)
 
 # Most if not all of these give a syntax error.
 
-v a riable = 3
-va#riable = 3
-?3JUE340__de0 = 3
+#v a riable = 3
+#va#riable = 3
+#?3JUE340__de0 = 3
 
 #Challenge 1
 
