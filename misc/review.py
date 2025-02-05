@@ -15,7 +15,7 @@ def get_words(count):
 
 def s_words(words):
     count2 = 0
-    for word in range(len(words)):
+    for word in words:
         if word[0] == "s".lower():
             count2 += 1
     return count2
