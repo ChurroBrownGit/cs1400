@@ -16,7 +16,7 @@ def get_words(count):
 def s_words(words):
     count2 = 0
     for word in words:
-        if word[0] == "s".lower():
+        if word[0].lower() == "s":
             count2 += 1
     return count2
 
@@ -36,7 +36,7 @@ def main():
     print("Out of", len(words), "words,", end=" ")
     print((len(five_letters)/len(words))*100, "% have 5 letters")
     print("Out of", len(words), "words,", end=" ")
-    print((len(six_letters)/len(words))*100, "% have 5 letters")
-    print("Out of", len(words), "words,", count2 , "start with s." )
+    print((len(six_letters)/len(words))*100, "% have 6 letters")
+    print("Out of", len(words), "words,", count2 , "start(s) with s." )
 
 main()
