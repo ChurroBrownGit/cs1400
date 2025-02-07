@@ -1,28 +1,10 @@
 #Goal 1,2,3, Challenge 1
-def main():
-    ''' Simple Hangman game word game '''
-    game = new_game() # all game data is stored in a list
-    while not is_game_over(game): # keep guessing until game is over
-        display_status(game) # output current game data
-        guess = input("\nnext guess? ")
-        if len(guess) > 0:
-            guess_letter(game, guess[0]) # process a guess
-    # output game result
-    if not is_word_guessed(game): # did they guess the letter?
-        print("\nYou lose.\nThe word is:", game[1])
-    else:
-        print("\nYou win!!")
-        display_status(game)
-if __name__ == "__main__":
-    main()  # start the program by calling the main function
-
 def new_game():
     ''' 
     Parameters: none
     Return value: a list containing 3 items, 
      a list of guessed letters, the word, and 
      the number of misses.
-
     Example: 
     game = new_game()
     game[0] # list of guessed letters
@@ -46,9 +28,9 @@ def pick_word():
     '''
     import random
     words = []
-    words.append("boolean")
-    words.append("concatenate")
-    words.append("modulus")
+    with open("file.txt","r") as f:
+        for word in f:
+            words.append(word)
     num = random.randrange(len(words)) # choose a random index
     return words[num]
 
@@ -166,8 +148,31 @@ def display_picture(game):
     elif misses >= 6:
         print("/ \\")
     print()
-
-gamerun = True
-while gamerun == True:
-    main()
-    main()
+    
+def main():
+    ''' Simple Hangman game word game '''
+    game = new_game() # all game data is stored in a list
+    while not is_game_over(game): # keep guessing until game is over
+        display_status(game) # output current game data
+        guess = input("\nnext guess? ")
+        if len(guess) > 0:
+            guess_letter(game, guess[0]) # process a guess
+    # output game result
+    if not is_word_guessed(game): # did they guess the letter?
+        print("\nYou lose.\nThe word is:", game[1])
+        playagain = input("Would you like to play again? (y/n) ")
+        if playagain.lower() == "y":
+            main()
+        else:
+            print("Thanks for playing!")
+            
+    else:
+        print("\nYou win!!")
+        display_status(game)
+        playagain = input("Would you like to play again? (y/n) ")
+        if playagain.lower() == "y":
+            main()
+        else:
+            print("Thanks for playing!")
+if __name__ == "__main__":
+    main()  # start the program by calling the main function
