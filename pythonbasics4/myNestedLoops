@@ -24,8 +24,27 @@ for c in range(24):
 
 #Challenge 1
 def matrix_increment(lists):
+    for i in lists:
+        for f in range(len(i)):
+            i[f] += 1
+    return lists    
 
+list = matrix_increment([[1,1,1,1], [1,1,1,1], [1,1,1,1],[1,1,1,1]])
+print(list)
 
+#Challenge 2
+def print_ttt_board(board):
+    for i in range(3):
+        print(" " + (board[i][0] if board[i][0] else " ") + " | " +
+        (board[i][1] if board[i][1] else " ") + " | " +
+        (board[i][2] if board[i][2] else " "))
+        if i < 2:
+                print("-----------")
 
+board = [
+    ["X", "O", " "],
+    ["O", "X", " "],
+    ["O", "X", "O"]
+]
 
-lists = []
+print_ttt_board(board)
