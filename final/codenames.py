@@ -3,9 +3,9 @@
 
 #GAMEPLAN:
 #Step 1: Setup
-    #-Make randomized board
-    #-List of codenames
-    #-Random spy location generator
+    #-Make randomized board - DONE
+    #-List of codenames - DONE
+    #-Random spy location generator - 
 #Step 2: Players
     #-Create teams, num of players
     #-Choose names
@@ -21,19 +21,32 @@
     #-Which team found all agents
     #-End game
 
+
 import random
 
 def makeboard(filename):
+    codewords1 = []
+    codewords2 = []
+    codewords3 = []
+    codewords4 = []
+    codewords5 = []
     with open(filename, "r") as file:
         words = file.readlines()
-        if words:
-            random_word = random.choice(words)
-            print(random_word.strip())
-        else:
-            print("Empty file!")
+        words = [word.strip() for word in words]
+        codewords1 = random.sample(words, 5)
+        print(codewords1)
+        codewords2 = random.sample(words, 5)
+        print(codewords2)
+        codewords3 = random.sample(words, 5)
+        print(codewords3)
+        codewords4 = random.sample(words, 5)
+        print(codewords4)
+        codewords5 = random.sample(words, 5)
+        print(codewords5)
 
 makeboard("codenames.txt")
 
+def spyboard()
+
 def turns():
 
-def spyboard():
