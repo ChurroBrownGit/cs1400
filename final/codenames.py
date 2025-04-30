@@ -14,6 +14,7 @@
 
 
 import random
+import os
 
 def makeboard(filename):
     codewords1 = []
@@ -51,23 +52,25 @@ def print_board(board):
         print(board[i:i+5])
 
 newspyboard, num_blue = spyboard()
-print_board(newspyboard)
 
 def players(num_blue):
     numofplayers = int(input("How many players will be playing?: "))
-    names = []
-    first = "0"
-    for i in range(numofplayers):
-        name = input("What is thou name?: ")
-        names.append(name)
-    random.shuffle(names)
-    half = numofplayers // 2
-    teamred = names[:half]
-    teamblue = names[half:]
-    if num_blue == 8:
-        first = "Red"
-    elif num_blue == 9:
-        first = "Blue"
+    if numofplayers > 8:
+        print("fuck you")
+    else:
+        names = []
+        first = "0"
+        for i in range(numofplayers):
+            name = input("What is thou name?: ")
+            names.append(name)
+        random.shuffle(names)
+        half = numofplayers // 2
+        teamred = names[:half]
+        teamblue = names[half:]
+        if num_blue == 8:
+            first = "Red"
+        elif num_blue == 9:
+            first = "Blue"
     return teamred, teamblue, first
 
 teamblue, teamred, first = players(num_blue)
@@ -75,8 +78,31 @@ print("Team 1:", teamred)
 print("Team 2:", teamblue)
 print("Team " + first + " will go first.")
 
-def turns(newwordboard, newspyboard, teamblue, teamred, first): 
-    codegiver = random.randint(teamblue)
+def turns(newspyboard, teamblue, teamred): 
+    guesserblue = random.choice(teamblue)
+    teamblue.remove(guesserblue)
+    codegivblue = random.choice(teamblue)
+    teamblue.append(guesserblue)
+        
+    guesserred = random.choice(teamred)
+    teamred.remove(guesserred)
+    codegivred = random.choice(teamred)
+    teamred.append(guesserred)
     
-    for item in teamblue:
-        guesser=random.randint(teamblue)
+    return guesserred, guesserblue, codegivred, codegivblue
+    
+guesserred, guesserblue, codegivred, codegivblue = turns(newspyboard, teamblue, teamred)
+print("Team Red's guesser is " + str(guesserred) + ".")
+print("Team Blue's guesser is " + str(guesserblue) + ".")
+print("Team Red's codegiver is " + str(codegivred) + ".")
+print("Team Blue's codegiver is " + str(codegivblue) + ".")
+
+def play(newspyboard, teamblue, teamred, gusserred, guesserblue, first, newwordboard, codgivred, codgivblue):
+    #chicken jockey
+    print("pls have everyone but the code givers to look away, when your ready to proceed and see the spyboard please press 1")
+    answer=int(input("pls for the love of everything thats holy press 1"))
+    if answer==1:
+        print(spyboard)
+    else:
+        print("what you mean by that?!")
+
