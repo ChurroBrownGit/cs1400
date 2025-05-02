@@ -1,5 +1,5 @@
 #CODENAMES
-#Rob Combs, Joel Hadley, Zach Sherratt
+#Rob Combs, Joel Hadley
 
 #GAMEPLAN:
 #Step 3: Play
@@ -17,26 +17,26 @@ import random
 import os
 
 def makeboard(filename):
-    codewords1 = []
-    codewords2 = []
-    codewords3 = []
-    codewords4 = []
-    codewords5 = []
     with open(filename, "r") as file:
-        words = file.readlines()
-        words = [word.strip() for word in words]
-        codewords1 = random.sample(words, 5)
-        print(codewords1)
-        codewords2 = random.sample(words, 5)
-        print(codewords2)
-        codewords3 = random.sample(words, 5)
-        print(codewords3)
-        codewords4 = random.sample(words, 5)
-        print(codewords4)
-        codewords5 = random.sample(words, 5)
-        print(codewords5)
+        words = [word.strip() for word in file.readlines()]
+    
+    if len(words) < 25:
+        raise ValueError("Not enough words in file to build the board.")
+
+    codewords1 = random.sample(words, 5)
+    codewords2 = random.sample(words, 5)
+    codewords3 = random.sample(words, 5)
+    codewords4 = random.sample(words, 5)
+    codewords5 = random.sample(words, 5)
+    print(codewords1)
+    print(codewords2)
+    print(codewords3)
+    print(codewords4)
+    print(codewords5)
+    return [codewords1, codewords2, codewords3, codewords4, codewords5]
 
 newwordboard = makeboard("codenames.txt")
+print(newwordboard)
 
 def spyboard():
     num_blue = random.choice([8, 9])
@@ -98,11 +98,21 @@ print("Team Red's codegiver is " + str(codegivred) + ".")
 print("Team Blue's codegiver is " + str(codegivblue) + ".")
 
 def play(newspyboard, teamblue, teamred, gusserred, guesserblue, first, newwordboard, codgivred, codgivblue):
-    #chicken jockey
-    print("pls have everyone but the code givers to look away, when your ready to proceed and see the spyboard please press 1")
-    answer=int(input("pls for the love of everything thats holy press 1"))
-    if answer==1:
-        print(spyboard)
-    else:
-        print("what you mean by that?!")
+    while True:
+        print("pls have everyone but the code givers to look away, when your ready to proceed and see the spyboard please press 1")
+        answer=int(input("pls for the love of everything thats holy press 1"))
+        if answer==1:
+            for i in range(0, 25, 5):
+                print(newspyboard[i:i+5])
+        else:
+            print("what you mean by that?!")
+        answerpart2=int(input("if your ready to let everyone else look at the board press 1 again: "))
+        if answerpart2==1:
+            os.system("cls" if os.name == "nt" else "clear")
+            print(newwordboard)
+        else:
+            print("I didn't catch that.")
+        hint=input("what is thy wisdom for the other team(that means a hint): ")
+        print("show this to the guessers: "+hint)
 
+play(newspyboard, teamblue, teamred, guesserred, guesserblue, first, newwordboard, codegivred, codegivblue)
